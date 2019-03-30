@@ -55,28 +55,34 @@ namespace _10MinuteMail.net
 
         public async Task<string> GetEmailAddress()
         {
-            return (await GetResponse()).mail_get_mail;
+            return (await GetResponse()).Address;
+        }
+
+        public async Task<string> GetHost()
+        {
+            return (await GetResponse()).Host;
         }
 
         public async Task<int> GetSecondsLeft()
         {
-            return (await GetResponse()).mail_left_time;
+            return (await GetResponse()).TimeLeft;
         }
         
         public async Task<int> GetEmailCount()
         {
-            return (await GetResponse()).mail_list.Length;
+            return (await GetResponse()).MailList.Length;
         }
 
         public async Task<MailContent[]> GetEmails()
         {
+            //Get the list of emails that we have...
             var response = await GetResponse();
-
-            var mails = new MailContent[response.mail_list.Length];
-
-            for (var i = 0; i < response.mail_list.Length; i++)
+            //Create array to store result in
+            var mails = new MailContent[response.MailList.Length];
+            //Foreach email get it from the server
+            for (var i = 0; i < response.MailList.Length; i++)
             {
-                mails[i] = await GetMailContent(response.mail_list[i].MailId);
+                mails[i] = await GetMailContent(response.MailList[i].MailId);
             }
 
             return mails;
@@ -85,7 +91,7 @@ namespace _10MinuteMail.net
         public async Task<MailContent> GetLastEmail()
         {
             var response = await GetResponse();
-            return await GetMailContent(response.mail_list[0].MailId);
+            return await GetMailContent(response.MailList[0].MailId);
         }
 
         public async Task Reset10Minutes()

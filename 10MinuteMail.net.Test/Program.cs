@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace _10MinuteMail.net.Test
 {
@@ -9,17 +10,13 @@ namespace _10MinuteMail.net.Test
             var tenMinuteMail = new TenMinuteMail();
 
             var email = tenMinuteMail.GetEmailAddress().Result;
-            var emails = tenMinuteMail.GetEmails().Result;
-
-            tenMinuteMail.GenerateNewEmailAddress().Wait();
-
-            var email2 = tenMinuteMail.GetEmailAddress().Result;
-
-            tenMinuteMail.Reset100Minutes().Wait();
-
-            var seconds = tenMinuteMail.GetSecondsLeft().Result;
-
+            Console.WriteLine(email);
             Debugger.Break();
+            while (true)
+            {
+                var emails = tenMinuteMail.GetEmails().Result;
+                Debugger.Break();
+            }
         }
     }
 }

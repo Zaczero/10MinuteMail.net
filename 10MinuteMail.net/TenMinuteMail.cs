@@ -1,53 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using _10MinuteMail.net.Types;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace _10MinuteMail.net
 {
-    [Serializable]
-    public struct MailResponse
-    {
-        public string mail_get_user;
-        public string mail_get_mail;
-        public string mail_get_host;
-        public int mail_get_time;
-        public int mail_get_duetime;
-        public int mail_server_time;
-        public string mail_get_key;
-        public int mail_left_time;
-        public string mail_recovering_key;
-        public string mail_recovering_mail;
-        public string session_id;
-        public MailEntry[] mail_list;
-    }
-
-    [Serializable]
-    public struct MailEntry
-    {
-        public string mail_id;
-        public string from;
-        public string subject;
-        public string datetime;
-        public string datetime2;
-        public int timeago;
-        public bool isread;
-    }
-
-    [Serializable]
-    public struct MailContent
-    {
-        public string from;
-        public string gravatar;
-        public string to;
-        public string subject;
-        public string datetime;
-        public int timestamp;
-        public string datetime2;
-        public string[] urls;
-        public string[] html;
-    }
-
     public class TenMinuteMail
     {
         private readonly HttpClient httpClient;
@@ -68,6 +26,9 @@ namespace _10MinuteMail.net
             }
         }
 
+        /// <summary>
+        /// Gets a list of recived emails and information about the session
+        /// </summary>
         public async Task<MailResponse> GetResponse()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/address.api.php");
@@ -115,7 +76,7 @@ namespace _10MinuteMail.net
 
             for (var i = 0; i < response.mail_list.Length; i++)
             {
-                mails[i] = await GetMailContent(response.mail_list[i].mail_id);
+                mails[i] = await GetMailContent(response.mail_list[i].MailId);
             }
 
             return mails;
@@ -124,7 +85,7 @@ namespace _10MinuteMail.net
         public async Task<MailContent> GetLastEmail()
         {
             var response = await GetResponse();
-            return await GetMailContent(response.mail_list[0].mail_id);
+            return await GetMailContent(response.mail_list[0].MailId);
         }
 
         public async Task Reset10Minutes()

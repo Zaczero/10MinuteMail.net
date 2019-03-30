@@ -3,16 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>_10MinuteMail.net</RootNamespace>
-    <Version>1.1.0</Version>
-    <Authors>Zaczero (Kamil Monicz)</Authors>
-    <Company>Zaczero (Kamil Monicz)</Company>
+    <Version>1.2.0</Version>
+    <Authors>Zaczero (Kamil Monicz), TheHllm</Authors>
+    <Company></Company>
     <Description>Simple API wrapper for https://10minutemail.net/</Description>
-    <Copyright>Copyright (c) Zaczero (Kamil Monicz) 2019</Copyright>
-    <PackageProjectUrl>https://github.com/Zaczero/10MinuteMail.net</PackageProjectUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseUrl>https://github.com/Zaczero/10MinuteMail.net/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright></Copyright>
+    <PackageProjectUrl>https://github.com/TheHllm/10MinuteMail.net</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageTags>10minutemail, 10mail, 10minute, 100minute, disposable, disposable-email, net, standard, temporary</PackageTags>
     <PackageId>10MinuteMail.net-API</PackageId>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

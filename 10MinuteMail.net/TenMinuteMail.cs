@@ -27,7 +27,7 @@ namespace _10MinuteMail.net
         }
 
         /// <summary>
-        /// Gets a list of recived emails and information about the session
+        /// Gets a list of revived emails and information about the session
         /// </summary>
         public async Task<MailResponse> GetResponse()
         {
@@ -79,7 +79,7 @@ namespace _10MinuteMail.net
             var response = await GetResponse();
             //Create array to store result in
             var mails = new MailContent[response.MailList.Length];
-            //Foreach email get it from the server
+            //For each email get it from the server
             for (var i = 0; i < response.MailList.Length; i++)
             {
                 mails[i] = await GetMailContent(response.MailList[i].MailId);
@@ -118,7 +118,7 @@ namespace _10MinuteMail.net
             SetCookies(response);
         }
 
-        public async Task RecoverExpiredEmailAddress()
+        public async Task RecoverEmailAddress()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/recover.html");
             var response = await httpClient.SendAsync(request);

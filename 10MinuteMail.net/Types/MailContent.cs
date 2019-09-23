@@ -19,7 +19,7 @@ namespace _10MinuteMail.net.Types
         [JsonProperty(PropertyName = "datetime")]
         public string Datetime { get; set; }
         [JsonProperty(PropertyName = "datetime2")]
-        public string Datetime2 { get; set; }
+        public string DateTime2 { get; set; }
         [JsonProperty(PropertyName = "timestamp")]
         public int Timestamp { get; set; }
         [JsonProperty(PropertyName = "urls")]

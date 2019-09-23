@@ -17,7 +17,7 @@ namespace _10MinuteMail.net.Types
         [JsonProperty(PropertyName = "mail_get_time")]
         public int GetTime;
         [JsonProperty(PropertyName = "mail_get_duetime")]
-        public int Duetime { get; set; }
+        public int DueTime { get; set; }
         [JsonProperty(PropertyName = "mail_server_time")]
         public int ServerTime { get; set; }
         [JsonProperty(PropertyName = "mail_get_key")]

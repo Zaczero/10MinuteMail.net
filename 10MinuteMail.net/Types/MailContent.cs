@@ -17,7 +17,7 @@ namespace _10MinuteMail.net.Types
         [JsonProperty(PropertyName = "subject")]
         public string Subject { get; set; }
         [JsonProperty(PropertyName = "datetime")]
-        public string Datetime { get; set; }
+        public string DateTime { get; set; }
         [JsonProperty(PropertyName = "datetime2")]
         public string DateTime2 { get; set; }
         [JsonProperty(PropertyName = "timestamp")]

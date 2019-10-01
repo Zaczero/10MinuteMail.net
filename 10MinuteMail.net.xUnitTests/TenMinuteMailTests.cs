@@ -91,5 +91,11 @@ namespace _10MinuteMail.net.xUnitTests
         {
             await tenMinuteMail.GenerateNewEmailAddress();
         }
+
+        [Fact]
+        public async System.Threading.Tasks.Task CanRecoverEmailAddress()
+        {
+	        await tenMinuteMail.RecoverEmailAddress();
+        }
     }
 }

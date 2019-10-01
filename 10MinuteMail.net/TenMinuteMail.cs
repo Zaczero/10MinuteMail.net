@@ -8,11 +8,11 @@ namespace _10MinuteMail.net
 {
     public class TenMinuteMail
     {
-        private readonly HttpClient httpClient;
+        private readonly HttpClient _httpClient;
 
         public TenMinuteMail()
         {
-            httpClient = new HttpClient();
+            _httpClient = new HttpClient();
         }
 
         private void SetCookies(HttpResponseMessage responseMessage)
@@ -21,7 +21,7 @@ namespace _10MinuteMail.net
             {
                 foreach (var cookie in cookies)
                 {
-                    httpClient.DefaultRequestHeaders.Add("Cookie", cookie);
+                    _httpClient.DefaultRequestHeaders.Add("Cookie", cookie);
                 }
             }
         }
@@ -32,7 +32,7 @@ namespace _10MinuteMail.net
         public async Task<MailResponse> GetResponse()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/address.api.php");
-            var response = await httpClient.SendAsync(request);
+            var response = await _httpClient.SendAsync(request);
 
             SetCookies(response);
 
@@ -45,7 +45,7 @@ namespace _10MinuteMail.net
             var mailIdSafe = Uri.EscapeUriString(mailId);
 
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/mail.api.php?mailid=" + mailIdSafe);
-            var response = await httpClient.SendAsync(request);
+            var response = await _httpClient.SendAsync(request);
 
             SetCookies(response);
 
@@ -97,7 +97,7 @@ namespace _10MinuteMail.net
         public async Task Reset10Minutes()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/more.html");
-            var response = await httpClient.SendAsync(request);
+            var response = await _httpClient.SendAsync(request);
 
             SetCookies(response);
         }
@@ -105,7 +105,7 @@ namespace _10MinuteMail.net
         public async Task Reset100Minutes()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/more100.html");
-            var response = await httpClient.SendAsync(request);
+            var response = await _httpClient.SendAsync(request);
 
             SetCookies(response);
         }
@@ -113,7 +113,7 @@ namespace _10MinuteMail.net
         public async Task GenerateNewEmailAddress()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/new.html");
-            var response = await httpClient.SendAsync(request);
+            var response = await _httpClient.SendAsync(request);
 
             SetCookies(response);
         }
@@ -121,7 +121,7 @@ namespace _10MinuteMail.net
         public async Task RecoverEmailAddress()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://10minutemail.net/recover.html");
-            var response = await httpClient.SendAsync(request);
+            var response = await _httpClient.SendAsync(request);
 
             SetCookies(response);
         }
